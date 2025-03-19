@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SneakDeak - Login</title>
+    <link rel="stylesheet" href="Styles/login.css">
+</head>
+<body>
+    <div class="wrapper">
+        <form id="loginForm">
+            <h1 class="Signin">Sign in</h1>
+            <label for="username">Username</label>
+            <input type="text" id="username" class="Username" placeholder="Enter your username" required>
+            <label for="password">Password</label>
+            <input type="password" id="password" class="Password" placeholder="Enter your password" required>
+            <button type="submit" class="LoginButton">Login</button>
+            <p class="Register">Don't have an account? <a class="Register-link" href="Register.html">Register</a></p>
+        </form>
+    </div>
+
+    <button type="button" class="SettingsLogin" id="settingsButton">Settings</button>
+    
+    <div id="settingsModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2 class="SettingsText">Settings</h2>
+            <form id="connectionForm">
+                <label for="connectionType">Выберите тип подключения:</label>
+                <select id="connectionType" name="Тип">
+                    <option value="HTTPS">HTTPS</option>
+                    <option value="HTTP">HTTP</option>
+                </select>
+                <input type="text" id="hostInput" class="HostPlaceholder" placeholder="Host">
+                <input type="text" id="portInput" class="PortPlaceholder" placeholder="Port">
+                <button type="button" id="connectButton" class="ConnectSettingsButton">Connect</button>
+            </form>
+            <div id="connectionStatus" class="status-message"></div>
+        </div>
+    </div>
+    <script>
+        const modal = document.getElementById("settingsModal");
+        const btn = document.getElementById("settingsButton");
+        const span = document.getElementsByClassName("close")[0];
+
+        btn.onclick = function() {
+            modal.style.display = "block";
+        }
+
+        span.onclick = function() {
+            modal.style.display = "none";
+        }
+
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', function () {
+            const modal = document.getElementById('settingsModal');
+            const closeButton = modal.querySelector('.close');
+            const connectButton = document.getElementById('connectButton');
+            const connectionStatus = document.getElementById('connectionStatus');
+
+            closeButton.addEventListener('click', () => {
+                modal.style.display = 'none';
+            });
+
+            connectButton.addEventListener('click', async () => {
+                const host = document.getElementById('hostInput').value.trim();
+                const port = document.getElementById('portInput').value.trim();
+                const connectionType = document.getElementById('connectionType').value;
+
+                if (!host || !port) {
+                    connectionStatus.textContent = 'Пожалуйста, заполните хост и порт.';
+                    connectionStatus.style.color = 'red';
+                    return;
+                }
+
+                const url = `${connectionType.toLowerCase()}://${host}:${port}`;
+
+                try {
+                    const response = await fetch(url, {
+                        method: 'GET',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                    });
+
+                    if (response.ok) {
+                        connectionStatus.textContent = 'Подключение успешно установлено!';
+                        connectionStatus.style.color = 'green';
+                    } else {
+                        connectionStatus.textContent = 'Ошибка подключения. Проверьте хост и порт.';
+                        connectionStatus.style.color = 'red';
+                    }
+                } catch (error) {
+                    connectionStatus.textContent = 'Ошибка подключения: ' + error.message;
+                    connectionStatus.style.color = 'red';
+                }
+            });
+        });
+        
+        document.getElementById('loginForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+
+            localStorage.setItem('username', username);
+            localStorage.setItem('password', password);
+
+            window.location.href = 'sign.html';
+        });
+    </script>
+</body>
+</html>

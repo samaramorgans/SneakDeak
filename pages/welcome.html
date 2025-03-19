@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SneakDeak - Welcome</title>
+    <link rel="stylesheet" href="Styles/welcome.css">
+</head>
+<body>
+    <div class="welcome-header">
+        <h1>Welcome, <span id="username"></span>!</h1>
+        <p>Вы успешно авторизовались.</p>
+    </div>
+    <div class="user-menu">
+        <div class="user-info">
+            <h2>Ваши данные</h2>
+            <p><strong>Username:</strong> <span id="menu-username"></span></p>
+            <p><strong>Status:</strong> <span class="status">online</span></p>
+        </div>
+        <button onclick="next()">Далее</button>
+    </div>
+
+    <script>
+        const username = localStorage.getItem('username');
+
+if (!username) {
+    window.location.href = 'login.html';
+}
+
+document.title = `SneakDeak - ${username}`;
+document.getElementById('username').textContent = username;
+document.getElementById('menu-username').textContent = username;
+
+function next() {
+    window.location.href = 'interface.html';
+}
+    </script>
+</body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SneakDeak - Login</title>
+    <link rel="stylesheet" href="Styles/Load.css">
+</head>
+<body>
+    <h1>Connecting to server<span class="dots"></span></h1>
+    <script src="Client/login.js"></script>
+    <script>
+        const username = localStorage.getItem('username');
+        const password = localStorage.getItem('password');
+
+        if (username && password) {
+            console.log('Username:', username);
+            console.log('Password:', password);
+
+            if (username === 'admin' && password === 'password') {
+                alert('Авторизация успешна!');
+                window.location.href = 'dashboard.html';
+            } else {
+                alert('Неверное имя пользователя или пароль');
+                window.location.href = 'login.html';
+            }
+        } else {
+            alert('Данные для входа отсутствуют');
+            window.location.href = 'login.html';
+        }
+    </script>
+</body>
+</html>

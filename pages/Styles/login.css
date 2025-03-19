@@ -1,0 +1,150 @@
+body {
+   font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   margin: 30vh;
+   background: url('background.jpg');
+}
+
+.wrapper {
+   background-color: rgba(255, 255, 255, 0.8);
+   padding: 40px;
+   border-radius: 10px;
+   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+   position: absolute;
+   top: 125px;
+   text-align: center;
+}
+
+.wrapper .Signin {
+   color: #333;
+   font-size: 24px;
+   margin-bottom: 20px;
+}
+
+.wrapper label {
+   display: block;
+   margin-bottom: 10px;
+   color: #333;
+   font-size: 14px;
+}
+
+.wrapper .Username,
+.wrapper .Password {
+   width: 100%;
+   padding: 10px;
+   margin-bottom: 15px;
+   border: 1px solid #ccc;
+   border-radius: 5px;
+   font-size: 14px;
+   position: relative;
+   right: 10px;
+}
+
+.wrapper .LoginButton {
+   width: 100%;
+   padding: 10px;
+   background-color: #333;
+   color: #fff;
+   border: none;
+   border-radius: 5px;
+   cursor: pointer;
+   font-size: 16px;
+}
+
+.wrapper .LoginButton:hover {
+   background-color: #555;
+}
+
+.wrapper .Register {
+   margin-top: 10px;
+   color: #333;
+}
+
+.wrapper .Register-link {
+   color: #333;
+   text-decoration: none;
+}
+
+.wrapper .Register-link:hover {
+   text-decoration: underline;
+}
+
+.SettingsLogin {
+   position: absolute;
+   top: 0px;
+   left: 0px;
+   border: none;
+   width: 185px;
+   height: 55px;
+   background-color: #333;
+   color: #fff;
+}
+
+.modal {
+   display: none;
+   position: fixed;
+   z-index: 1;
+   left: 0;
+   top: 0;
+   width: 100%;
+   height: 100%;
+   overflow: none;
+   background-color: rgb(0,0,0);
+   background-color: rgba(0,0,0,0.4);
+}
+
+.modal-content {
+   background-color: #fefefe;
+   margin: 15% auto;
+   padding: 45px;
+   border: 1px solid #888;
+   width: 80%;
+   max-width: 500px;
+}
+
+.close {
+   color: #aaa;
+   float: right;
+   font-size: 28px;
+   font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+   color: black;
+   text-decoration: none;
+   cursor: pointer;
+}
+
+.HostPlaceholder,
+.PortPlaceholder {
+   width: 100%;
+   padding: 10px;
+   margin-bottom: 15px;
+   border: 1px solid #ccc;
+   border-radius: 5px;
+   font-size: 14px;
+}
+
+.ConnectSettingsButton {
+   width: 100%;
+   padding: 10px;
+   background-color: #333;
+   color: #fff;
+   border: none;
+   border-radius: 5px;
+   cursor: pointer;
+   font-size: 16px;
+}
+
+.ConnectSettingsButton:hover {
+   background-color: #555;
+}
+
+.status-message {
+   margin-top: 20px;
+   font-size: 14px;
+   color: #333;
+}

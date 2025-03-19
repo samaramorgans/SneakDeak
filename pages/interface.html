@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Чат</title>
+    <link rel="stylesheet" href="Styles/interface.css">
+</head>
+<body>
+    <div class="sidebar">
+        <div class="user-info">
+            <img src="assets/username.jpg" class="User-photo">
+            <div class="details">
+                <div class="username" id="username">Username</div>
+                <div class="status">
+                    <p>Status: <a id="status">update</a></p>
+                </div>
+            </div>
+            <div class="menu-icon" onclick="toggleMenu()">&#8230;</div>
+            <div class="menu-dropdown" id="menuDropdown">
+                <ul>
+                    <li><a href="#" onclick="openSettingsModal()">Settings</a></li>
+                    <li><a id="signOutLink" style="color: red; cursor: pointer;">Sign out</a></li>
+                </ul>
+            </div>
+        </div>
+        <div id="confirmationModal" class="modal">
+            <div class="modal-content">
+              <p>Вы точно хотите выйти?</p>
+              <button id="confirmSignOut">Выйти</button>
+              <button id="cancelSignOut">Отмена</button>
+            </div>
+          </div>
+        <div class="search-box">
+            <input type="text" placeholder="Поиск контактов...">
+        </div>
+        <ul class="contact-list">
+            <h2>Contact-list</h2>
+            <p>Контакт-лист пуст</p>
+        </ul>
+    </div>
+    <div class="main-content">
+        <h1>Начните общаться уже сегодня!</h1>
+        <p>Добавьте контакты, чтобы начать диалог.</p>
+    </div>
+<div id="settingsModal" class="modal">
+    <div class="modal-content">
+        <div class="settings-container">
+            <div class="settings-tabs">
+                <button class="tablink" onclick="openTab(event, 'General')">Общие</button>
+                <button class="tablink" onclick="openTab(event, 'Account')">Аккаунт</button>
+                <button class="tablink" onclick="openTab(event, 'About')">О программе</button>
+                <button class="tablink" onclick="openTab(event, 'Connections')">Соединения</button>
+            </div>
+            <div class="settings-content">
+                <div id="General" class="tabcontent">
+                    <h3>Общие настройки</h3>
+                    <p>Настройки общего характера.</p>
+                </div>
+                <div id="Account" class="tabcontent">
+                    <h3>Настройки аккаунта</h3>
+                    <p>Управление аккаунтом.</p>
+                </div>
+                <div id="About" class="tabcontent">
+                    <h3>О программе</h3>
+                    <p>Информация о программе.</p>
+                </div>
+                <div id="Connections" class="tabcontent">
+                    <h3>Соединения</h3>
+                    <p>Управление соединениями.</p>
+                    <label for="connectionType">Выберите тип подключения:</label>
+                <select id="connectionType" name="Тип">
+                    <option value="HTTPS">HTTPS</option>
+                    <option value="HTTP">HTTP</option>
+                </select>
+                <button type="button" id="connectButton" class="ConnectSettingsButton">Connect</button>
+                <input type="text" placeholder="Host" required>
+                <input type="text" placeholder="Port" required>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+    <script src="Client/Client.js"></script>
+</body>
+</html>
